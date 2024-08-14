@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 14, 2024 at 02:55 AM
+-- Generation Time: Aug 14, 2024 at 05:36 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -33,9 +33,28 @@ CREATE TABLE `books` (
   `idBooks` char(36) NOT NULL DEFAULT uuid(),
   `Books_name` varchar(45) NOT NULL,
   `price` int(4) NOT NULL,
-  `category` varchar(45) NOT NULL,
-  `author_libr` varchar(45) NOT NULL
+  `author_libr` varchar(45) NOT NULL,
+  `image` varchar(50) NOT NULL,
+  `description` varchar(60) NOT NULL,
+  `stars` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `books`
+--
+
+INSERT INTO `books` (`idBooks`, `Books_name`, `price`, `author_libr`, `image`, `description`, `stars`) VALUES
+('12ab90c0-59eb-11ef-b65e-2c44fd2013ec', 'Mi oscuro Romeo', 10, 'Parker S. Huntington, L.J Shen', 'assets/Books/Libro1.png', 'Description 1', 4),
+('cd9c5b51-59ed-11ef-b65e-2c44fd2013ec', 'Amxr', 15, 'César Martínez', 'assets/Books/Libro2.png', 'Description 2', 5),
+('cd9d0063-59ed-11ef-b65e-2c44fd2013ec', 'No confies en Asher Hall', 20, 'Myriam M. Lejardi', 'assets/Books/Libro3.png', '', 4),
+('cd9d01b6-59ed-11ef-b65e-2c44fd2013ec', 'Tan Poca Vida', 20, 'Hanya Yanagihara', 'assets/Books/Libro4.png', '', 4),
+('cd9d0211-59ed-11ef-b65e-2c44fd2013ec', 'Los siete maridos de Evelyn Hugo', 20, 'Taylor Jenkins Reid', 'assets/Books/Libro5.png', '', 4),
+('cd9d0269-59ed-11ef-b65e-2c44fd2013ec', 'El color de las cosas invisibles', 20, 'Andrea Longarela', 'assets/Books/Libro6.png', '', 4),
+('cd9d02c5-59ed-11ef-b65e-2c44fd2013ec', 'Reiniciados', 20, 'Amy Tintera', 'assets/Books/Libro7.png', '', 4),
+('cd9d031b-59ed-11ef-b65e-2c44fd2013ec', 'La letra pequeña', 20, 'Lauren Asher', 'assets/Books/Libro8.png', '', 4),
+('cd9d036e-59ed-11ef-b65e-2c44fd2013ec', 'La Biblioteca de la medianoche', 20, 'Matt Haig', 'assets/Books/Libro9.png', '', 4),
+('cd9d03c2-59ed-11ef-b65e-2c44fd2013ec', 'Aquiles', 20, 'Madeline Miller', 'assets/Books/Libro10.png', '', 4),
+('cd9d0412-59ed-11ef-b65e-2c44fd2013ec', 'Donde viven las Musas', 20, 'Marianela Dos Santos', 'assets/Books/Libro11.png', '', 4);
 
 -- --------------------------------------------------------
 
