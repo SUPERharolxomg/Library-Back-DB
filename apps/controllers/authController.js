@@ -20,7 +20,7 @@ const login = (req, res) => {
 
   pool.query(query, [email], (err, results) => {
     if (err) {
-      console.error("Error en la consulta de la base de datos:", err); // Agregar un console.error para depuración
+      console.error("Error en la consulta de la base de datos:", err); 
       return res.status(500).json({ error: "Error en la base de datos" });
     }
 
@@ -33,7 +33,7 @@ const login = (req, res) => {
     // Verifica la contraseña con bcrypt
     bcrypt.compare(password, user.password, (err, isMatch) => {
       if (err) {
-        console.error("Error al comparar la contraseña:", err); // Agregar un console.error para depuración
+        console.error("Error al comparar la contraseña:", err); 
         return res.status(500).json({ error: "Error al verificar la contraseña" });
       }
 
@@ -41,7 +41,6 @@ const login = (req, res) => {
         return res.status(401).json({ error: "Password o Email incorrecto" });
       }
 
-      // Aquí puedes generar un token JWT si lo necesitas y enviarlo al cliente
       res.status(200).json({ message: "Login exitoso", user: user.email });
     });
   });
@@ -53,7 +52,6 @@ const register = (req, res) => {
     return res.status(400).json({ error: "Todos los campos son requeridos" });
   }
 
-  // Verifica si el correo, nombre o número de celular ya existen
   const queryCheck = `
     SELECT * FROM client WHERE client_name = ? OR phone = ? OR email = ?
   `;
