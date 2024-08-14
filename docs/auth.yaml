@@ -1,0 +1,61 @@
+openapi: 3.0.0
+info:
+  title: 'Ecommerce API'
+  version: '1.0.0'
+paths:
+  /auth/login:
+    post:
+      tags:
+        - Auth
+      summary: Login de usuario
+      description: Inicia sesión con correo electrónico y contraseña.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: Correo electrónico del usuario
+                  example: user@example.com
+                password:
+                  type: string
+                  description: Contraseña del usuario
+                  example: pass123
+                  format: password
+      responses:
+        '200':
+          description: Login exitoso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  email:
+                    type: string
+                    example: example@.com
+                  password:
+                    type: string
+                    example: MyS3cret
+        '400':
+          description: Datos inválidos
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Email y contraseña son requeridos"
+        '401':
+          description: Password o Email incorrecto
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Password o Email incorrecto"

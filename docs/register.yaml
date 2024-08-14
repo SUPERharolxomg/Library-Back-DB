@@ -1,0 +1,72 @@
+openapi: 3.0.0
+info:
+  title: 'Ecommerce API'
+  version: '1.0.0'
+paths:
+  /auth/register:
+    post:
+      tags:
+        - Auth
+      summary: Registro de usuario
+      description: Registra un nuevo usuario en la aplicación.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: Correo electrónico del usuario
+                  example: user@example.com
+                password:
+                  type: string
+                  description: Contraseña del usuario
+                  example: pass123
+                name:
+                  type: string
+                  description: Nombre del usuario
+                  example: John Doe
+                phone:
+                  type: string
+                  description: Número de celular del usuario
+                  example: "1234567890"
+                address:
+                  type: string
+                  description: Dirección del usuario
+                  example: "1234 Elm Street"
+      responses:
+        201:
+          description: Usuario registrado exitosamente
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: Mensaje de éxito
+                    example: "Usuario registrado exitosamente"
+        400:
+          description: Datos inválidos o duplicados
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: Descripción del error
+                    example: "El correo ya existe"
+        500:
+          description: Error en la base de datos
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: Descripción del error
+                    example: "Error en la base de datos"
