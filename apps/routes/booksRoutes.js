@@ -27,34 +27,77 @@ const booksController = require('../controllers/booksController');
  *               items:
  *                 type: object
  *                 properties:
- *                   id:
- *                     type: integer
- *                   title:
+ *                   idBooks:
  *                     type: string
- *                     example: Libro Ejemplo
+ *                     description: ID del libro
+ *                   Books_name:
+ *                     type: string
+ *                     description: Nombre del libro
+ *                   price:
+ *                     type: integer
+ *                     description: Precio del libro
+ *                   author_libr:
+ *                     type: string
+ *                     description: Autor del libro
+ *                   image:
+ *                     type: string
+ *                     description: Ruta de la imagen del libro
+ *                   description:
+ *                     type: string
+ *                     description: Descripción del libro
+ *                   stars:
+ *                     type: integer
+ *                     description: Número de estrellas del libro
  */
-router.get('/', booksController.getAllBooks);
 
 /**
  * @swagger
- * /books/{id}:
+ * /books/{idBooks}:
  *   get:
  *     tags:
  *       - Books
  *     summary: Obtener un libro por ID
  *     description: Devuelve un libro específico por su ID.
  *     parameters:
- *       - name: id
+ *       - name: idBooks
  *         in: path
  *         required: true
+ *         description: ID del libro a obtener
  *         schema:
- *           type: integer
+ *           type: string
  *     responses:
  *       200:
  *         description: Libro encontrado
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 idBooks:
+ *                   type: string
+ *                   description: ID del libro
+ *                 Books_name:
+ *                   type: string
+ *                   description: Nombre del libro
+ *                 price:
+ *                   type: integer
+ *                   description: Precio del libro
+ *                 author_libr:
+ *                   type: string
+ *                   description: Autor del libro
+ *                 image:
+ *                   type: string
+ *                   description: Ruta de la imagen del libro
+ *                 description:
+ *                   type: string
+ *                   description: Descripción del libro
+ *                 stars:
+ *                   type: integer
+ *                   description: Número de estrellas del libro
  *       404:
  *         description: Libro no encontrado
  */
-router.get('/:id', booksController.getBookById);
+
+router.get('/Books', booksController.getAllBooks);
 
 module.exports = router;

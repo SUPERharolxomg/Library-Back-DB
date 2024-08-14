@@ -1,3 +1,12 @@
+const mysql = require('mysql2');
+
+
+const pool = mysql.createPool({
+  host: 'localhost',
+  user: 'root',
+  password: '',
+  database: 'eccomerce'
+});
 /**
  * @swagger
  * /books:
@@ -8,15 +17,20 @@
  *       200:
  *         description: Lista de libros
  */
-exports.getAllBooks = (req, res) => {
-    // Implementa la lógica para obtener todos los libros
-    res.status(200).json([{ id: 1, title: 'Libro Ejemplo' }]);
-  };
-  
-  exports.getBookById = (req, res) => {
-    const { id } = req.params;
-    // Implementa la lógica para obtener un libro por ID
-    res.status(200).json({ id, title: 'Libro Ejemplo' });
-  };
-  
+
+const getAllBooks = (req, res) => {
+  const query = 'SELECT * FROM books';
+
+
+  pool.query(query, (err, results) => {
+    if (err) {
+      console.error("Error en la consulta de la base de datos:", err); // Agrega un console.error para depuración
+      return res.status(500).json({ error: "Error en la base de datos" });
+    }
+
+    // Envía los resultados al cliente
+    res.status(200).json(results);
+  });
+};
+module.exports ={ getAllBooks }
   
