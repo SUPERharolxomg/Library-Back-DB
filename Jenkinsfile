@@ -1,27 +1,18 @@
 pipeline {
     agent any
-
-    environment {
-        DOCKER_CREDENTIALS_ID = 'dockerhub-credentials'
-        DOCKER_IMAGE = 'superharolxomg/library-back-db'
-        DOCKER_REGISTRY = 'docker.io'
-    }
-
     stages {
         stage('Clonar Repositorio') {
             steps {
-                git 'https://github.com/SUPERharolxomg/Library-Back-DB.git'
+                git branch: 'main', url: 'https://github.com/SUPERharolxomg/Library-Back-DB.git'
             }
         }
-
         stage('Construir Imagen Docker') {
             steps {
                 script {
-                    docker.build(DOCKER_IMAGE)
+                    docker.build("superharolxomg/library-back-db")
                 }
             }
         }
-
         stage('Loguearse en Docker Hub') {
             steps {
                 script {
@@ -31,21 +22,14 @@ pipeline {
                 }
             }
         }
-
         stage('Publicar Imagen en Docker Hub') {
             steps {
                 script {
-                    docker.withRegistry("https://${DOCKER_REGISTRY}", DOCKER_CREDENTIALS_ID) {
-                        docker.image(DOCKER_IMAGE).push('latest')
-                    }
+                    def customImage = docker.image("superharolxomg/library-back-db")
+                    customImage.push("${env.BUILD_NUMBER}")
+                    customImage.push("latest")
                 }
             }
-        }
-    }
-
-    post {
-        always {
-            cleanWs()
         }
     }
 }
