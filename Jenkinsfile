@@ -19,19 +19,15 @@ pipeline {
         }
         stage('Loguearse en Docker Hub') {
             steps {
-                script {
-                    docker.withRegistry("https://${DOCKER_REGISTRY}", DOCKER_CREDENTIALS_ID) {
-                        echo 'Logueado en Docker Hub'
-                    }
+                withDockerRegistry([credentialsId: 'docker-hub-credentials', url: 'https://index.docker.io/v1/']) {
+                    sh 'echo $DOCKER_PASSWORD | docker login -u superharolxomg --password-stdin'
                 }
             }
         }
-        stage('Publicar Imagen en Docker Hub') {
+        stage('Push Docker Image') {
             steps {
                 script {
-                    def customImage = docker.image("superharolxomg/library-back-db")
-                    customImage.push("${env.BUILD_NUMBER}")
-                    customImage.push("latest")
+                    sh 'docker push superharolxomg/library-back-db'
                 }
             }
         }
