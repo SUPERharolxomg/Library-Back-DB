@@ -21,7 +21,7 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry(DOCKER_REGISTRY, DOCKER_CREDENTIALS_ID) {
-                        sh 'docker push superharolxomg/library-back-db'
+                        docker.image("superharolxomg/library-back-db").push("latest")
                     }
                 }
             }
