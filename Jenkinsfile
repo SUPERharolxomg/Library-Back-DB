@@ -19,7 +19,7 @@ pipeline {
         }
         stage('Loguearse en Docker Hub') {
             steps {
-                withDockerRegistry([credentialsId: 'docker-hub-credentials', url: 'https://index.docker.io/v1/']) {
+                withDockerRegistry([credentialsId: DOCKER_CREDENTIALS_ID, url: 'https://index.docker.io/v1/']) {
                     sh 'echo $DOCKER_PASSWORD | docker login -u superharolxomg --password-stdin'
                 }
             }
