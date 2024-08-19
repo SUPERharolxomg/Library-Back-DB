@@ -1,8 +1,11 @@
 # Usa una imagen base oficial de Node.js
 FROM node:18-alpine
 
+# Instala Python y otras dependencias necesarias para la compilación
+RUN apk add --no-cache python3 make g++ 
+
 # Establece el directorio de trabajo en el contenedor
-WORKDIR /usr/src/app
+WORKDIR /app
 
 # Copia los archivos de package.json y package-lock.json al directorio de trabajo
 COPY package*.json ./

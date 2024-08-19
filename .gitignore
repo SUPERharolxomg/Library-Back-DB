@@ -1,1 +1,8 @@
-".env"
+# Ignorar el directorio node_modules
+node_modules/
+
+# Ignorar otros archivos y directorios que no quieras versionar
+.DS_Store
+.env
+*.log
+*.tmp

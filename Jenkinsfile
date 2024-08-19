@@ -1,5 +1,9 @@
 pipeline {
     agent any
+    environment {
+        DOCKER_REGISTRY = 'https://index.docker.io/v1/'
+        DOCKER_CREDENTIALS_ID = 'dockerhub-credentials'
+    }
     stages {
         stage('Clonar Repositorio') {
             steps {
