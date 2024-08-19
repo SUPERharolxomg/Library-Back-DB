@@ -17,13 +17,6 @@ pipeline {
                 }
             }
         }
-        stage('Loguearse en Docker Hub') {
-            steps {
-                withDockerRegistry([credentialsId: DOCKER_CREDENTIALS_ID, url: DOCKER_REGISTRY]) {
-                    // No necesitas usar 'docker login' explícitamente aquí
-                }
-            }
-        }
         stage('Push Docker Image') {
             steps {
                 script {
