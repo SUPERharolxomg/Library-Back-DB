@@ -4,16 +4,16 @@ const cors = require ('cors');
 const { swaggerUi, swaggerDocs } = require('./swagger/swaggerConfig');
 
 
-// Configurar las variables de entorno
+
 dotenv.config();
 
 // Crear la aplicación Express
 const app = express();
 app.use(express.json());
 app.use(cors({
-  origin: 'http://localhost:4200', // Permite solicitudes solo desde este origen
-  methods: 'GET,POST,PUT,DELETE', // Métodos HTTP permitidos
-  allowedHeaders: 'Content-Type,Authorization' // Encabezados permitidos
+  origin: 'http://localhost:4200', 
+  methods: 'GET,POST,PUT,DELETE', 
+  allowedHeaders: 'Content-Type,Authorization' 
 }));
 
 // Rutas
