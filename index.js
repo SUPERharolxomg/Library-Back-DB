@@ -20,12 +20,12 @@ app.use(cors({
 const authRoutes = require('./apps/routes/authRoutes');
 const booksRoutes = require('./apps/routes/booksRoutes');
 const ordersRoutes = require('./apps/routes/ordersRoutes');
-const paymentsRoutes = require('./apps/routes/paymentsRoutes');
+const usersRoutes = require('./apps/routes/usersRoutes');
 
 app.use('/auth', authRoutes);
 app.use('/books', booksRoutes);
 app.use('/orders', ordersRoutes);
-app.use('/payments', paymentsRoutes);
+app.use('/users', usersRoutes);
 
 // Documentación Swagger
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));

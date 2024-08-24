@@ -5,7 +5,7 @@ const swaggerDefinition = {
   info: {
     title: 'Ecommerce API',
     version: '1.0.0',
-    description: 'API para una tienda de ecommerce',
+    description: 'API para una tienda de libros',
     contact: {
       name: 'Harold David Garces Casas',
       email: 'davidgarces171@example.com'
@@ -30,8 +30,8 @@ const swaggerDefinition = {
       description: 'Operaciones relacionadas con órdenes'
     },
     {
-      name: 'Payments',
-      description: 'Operaciones relacionadas con pagos'
+      name: 'Users',
+      description: 'Operaciones relacionadas con usuarios'
     },
   ],
 };
