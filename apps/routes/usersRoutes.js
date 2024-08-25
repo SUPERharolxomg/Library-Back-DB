@@ -187,6 +187,6 @@ const usersController = require('../controllers/usersController');
 
 router.get('/:idUser', usersController.getUserById);
 router.patch('/:idUser', usersController.updateUser);
-
+router.delete('/:idUser',usersController.deleteUser);
 
 module.exports = router;

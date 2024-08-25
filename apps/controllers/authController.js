@@ -8,6 +8,7 @@ const pool = mysql.createPool({
   database: 'eccomerce'
 });
 
+//Metodo para iniciar sesion en el programa
 const login = (req, res) => {
   const { email, password } = req.body;
 
@@ -41,7 +42,7 @@ const login = (req, res) => {
         return res.status(401).json({ error: "Password o Email incorrecto" });
       }
 
-      res.status(200).json({ message: "Login exitoso", user: user.email });
+      res.status(200).json({ message: "Login exitoso", user: user.client_id});
     });
   });
 };
